@@ -1,4 +1,4 @@
-# daily-python-practice
+## daily-python-practice
 I'd like to make a habit of practising problem solving techniques daily
 
 # Executing Scripts
