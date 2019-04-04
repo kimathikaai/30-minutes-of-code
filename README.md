@@ -1,7 +1,7 @@
 
 
 
-# 30 Minutes of Code
+# 30 Minutes of Python
 This repository is a small notebook for me a to play around with different python programming practices and concepts.
 
 ## Subdirectories
