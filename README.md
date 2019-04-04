@@ -8,5 +8,4 @@ A travel bag! I'm using this repository to play around with different programmin
 ### Executing Scripts
 Read the description in the beginning of each module to learn how to interact with it 
 
-### Git Branching Model
-https://nvie.com/posts/a-successful-git-branching-model/
+### [Git Branching Model](https://nvie.com/posts/a-successful-git-branching-model/)
