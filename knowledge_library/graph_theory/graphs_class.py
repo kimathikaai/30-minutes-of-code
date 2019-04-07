@@ -138,7 +138,6 @@ class Graph:
         The sequence of its vertex degrees in non-increasing order (5,2,1,1,0)
 
     '''
-
     def degree_sequence(self):
         ''' Calculates the degree sequence of a graph '''
         seq = []
@@ -147,6 +146,26 @@ class Graph:
             seq.append(self.vertex_degree(vertex))
         seq.sort(reverse=True)
         return tuple(seq)
+
+    '''
+    Erd"os Gallai Theorem:
+        Tells you when a sequence of integers occurs as the sequence of degrees of a simple
+        graph. 'Simple' means no loops or repeated edges
+    '''
+    @staticmethod
+    def erdoes_gallai(input_sequence):
+        ''' Checks if the conditions for the Erdoes-Gallai theorem '''
+        # Check if the sum of elements of the sequence is odd
+        if sum(input_sequence) % 2:
+            return False
+
+        for k in range(1,len(input_sequence) + 1):
+            left = sum(input_sequence[:k])
+            right = k * (k-1) + sum([min(x,k) for x in input_sequence[k:]])
+            if left > right:
+                return False
+        return True
+
 
 
 def main():
