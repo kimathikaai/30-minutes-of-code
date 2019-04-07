@@ -83,6 +83,46 @@ class Graph:
                 for p in extended_paths: 
                     paths.append(p)
         return paths
+        
+    '''
+    DEGREE:
+        The degree of a vertex in a graph is the number of edges connecting it,
+        with loops counted twice ('a'-'a')
+
+    REGULAR GRAPH:
+        If all the degrees in a graph are the same, the graph is a regular graph
+
+    THE DEGREE SUM FORMULA (HANDSHAKING LEMMA):
+        The sum of degrees of all vertices = number of edges * 2
+        We can conclude that the number of vertices with odd degree has to be even
+
+    '''
+    def vertex_degree(self,vertex):
+        ''' Find the degree of a vertex '''
+        adj_vertices = self.__graph_dict[vertex]
+        degree = len(adj_vertices) + adj_vertices.count(vertex)
+        return degree
+
+    def find_isolated_vertices(self):
+        ''' Returns a list of isolated vertices '''
+        graph = self.__graph_dict
+        isolated = []
+        for vertex in graph:
+            if len(graph[vertex]) == 0:
+                isolated += [vertex]
+        return isolated
+
+    def delta(self):
+        ''' Find the minimum degree of the vertices '''
+        graph = self.__graph_dict
+        vertices_size = [self.vertex_degree(vertex) for vertex in graph]
+        return min(vertices_size)
+
+    def Delta(self):
+        ''' Find the maximum degree of the vertices '''
+        graph = self.__graph_dict
+        vertices_size = [self.vertex_degree(vertex) for vertex in graph]
+        return max(vertices_size)
 
     def __str__(self):
         res = "vertices: "
