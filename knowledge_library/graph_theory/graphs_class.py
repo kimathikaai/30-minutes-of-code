@@ -13,6 +13,15 @@ class Graph:
         self.__graph_dict = graph_dict
         # Double underscore for 'name mangling'
 
+    def __str__(self):
+        res = "vertices: "
+        for k in self.__graph_dict:
+            res += str(k) + ' '
+        res += '\nedges: '
+        for edges in self.__generate_edges():
+            res += str(edge) + ' '
+        return res
+
     def vertices(self):
         ''' Returns the vertices of a graph '''
         return list(self.__graph_dict.keys())
@@ -124,14 +133,20 @@ class Graph:
         vertices_size = [self.vertex_degree(vertex) for vertex in graph]
         return max(vertices_size)
 
-    def __str__(self):
-        res = "vertices: "
-        for k in self.__graph_dict:
-            res += str(k) + ' '
-        res += '\nedges: '
-        for edges in self.__generate_edges():
-            res += str(edge) + ' '
-        return res
+    '''
+    DEGREE SEQUENCE:
+        The sequence of its vertex degrees in non-increasing order (5,2,1,1,0)
+
+    '''
+
+    def degree_sequence(self):
+        ''' Calculates the degree sequence of a graph '''
+        seq = []
+        graph = self.__graph_dict
+        for vertex in graph:
+            seq.append(self.vertex_degree(vertex))
+        seq.sort(reverse=True)
+        return tuple(seq)
 
 
 def main():
