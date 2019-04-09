@@ -166,6 +166,21 @@ class Graph:
                 return False
         return True
 
+    '''
+    Graph Density:
+        Ratio of the number of edges of a given graph, and the total number of edges, the graph could have.
+        Essentially how close a graph is to a complete graph
+        The maximum graph density is 1
+        Max number of edges = 0.5 * num_vertices * (num_vertices-1)
+        For undirected simple graphs, the graph density = actual_num_edges / [ 0.5 * num_vertices * (num_vertices-1) ]
+    '''
+    def density(self):
+        ''' A method to calculate the density of a graph '''
+        graph = self.__graph_dict
+        num_vertices = len(graph.keys())
+        num_edges = len(self.edges())
+        return 2 * num_edges / ( num_vertices**2 - num_vertices )
+
 
 
 def main():
